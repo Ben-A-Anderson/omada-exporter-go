@@ -123,6 +123,11 @@ All configuration values are read from environment variables. These can be provi
 ## Tested on devices:
 
 - **Switch**: [SG2218 v1.20](https://www.tp-link.com/en/business-networking/omada-switch-smart/sg2218/)
+              [SX3008F]()
+              [SG3218XP-M2 V1]()
 - **Router**: [ER707-M2 v1.0](https://www.tp-link.com/en/business-networking/omada-router-wired-router/er707-m2/v1/)
+              [ER8411](https://store.omadanetworks.com/products/omada-vpn-gateway-with-10g-ports-support-ssl-vpn-openvpn-and-ipsec-pptp-l2tp-l2tp-over-ipsec-vpn)
 - **Access Point**: [EAP650(EU) v1.0](https://www.tp-link.com/en/business-networking/omada-wifi-ceiling-mount/eap650/v1/)
+                    [EAP775-Wall]
 - **Omada controller**: [Software Controller v5.15.8.s hosted in Docker container](https://github.com/mbentley/docker-omada-controller)
+                        [Software Controller v6.2.14.11 hosted in Proxmox VM]
