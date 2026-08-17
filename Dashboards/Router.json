@@ -1,14 +1,6 @@
 {
   "__inputs": [
     {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    },
-    {
       "name": "VAR_RATE_INTERVAL",
       "type": "constant",
       "label": "rate_interval",
@@ -93,7 +85,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -142,7 +134,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "sum(\n  abs(deriv(port_tx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval])) +\n  abs(deriv(port_rx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval]))\n) * $__range",
@@ -158,7 +150,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -207,7 +199,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "sum(\n  abs(deriv(port_tx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval])) +\n  abs(deriv(port_rx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval]))\n) * 8",
@@ -223,7 +215,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -274,7 +266,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "cpu_usage{deviceType=\"$device_type\", device_name=\"$device_name\"}",
@@ -289,7 +281,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -340,7 +332,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "memory_usage{deviceType=\"$device_type\", device_name=\"$device_name\"}",
@@ -355,7 +347,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -417,7 +409,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "temperature{deviceType=\"$device_type\", device_name=\"$device_name\"}",
@@ -432,7 +424,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -497,7 +489,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -519,7 +511,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -604,7 +596,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "group(\n    port_upstream_state{deviceType=\"$device_type\", device_name=\"$device_name\"}\n    * on (macAddress, portID) group_left(portName, portMode)\n  max(port_info{deviceType=\"$device_type\", device_name=\"$device_name\", portMode=\"WAN\"} == 1) by (macAddress, portID, portName, portMode)\n    ) by (portName)",
@@ -620,7 +612,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -696,7 +688,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -759,7 +751,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -846,7 +838,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "port_internet_loss{deviceType=\"$device_type\", device_name=\"$device_name\"}\n* on (macAddress, portID) group_left(portName, portMode)\n  max(port_info{deviceType=\"$device_type\", device_name=\"$device_name\", portMode=\"WAN\"} == 1) by (macAddress, portID, portName, portMode)",
@@ -862,7 +854,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -949,7 +941,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "port_internet_latency{deviceType=\"$device_type\", device_name=\"$device_name\"}\n* on (macAddress, portID) group_left(portName, portMode)\n  max(port_info{deviceType=\"$device_type\", device_name=\"$device_name\", portMode=\"WAN\"} == 1) by (macAddress, portID, portName, portMode)",
@@ -965,7 +957,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1055,7 +1047,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "(\n  abs(deriv(port_tx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval]))\n  * on (macAddress, portID) group_left(portName, portMode)\n  max(port_info{deviceType=\"$device_type\", portMode!=\"\"} == 1) by (macAddress, portID, portName, portMode)\n) * 8",
@@ -1071,7 +1063,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1158,7 +1150,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "(\n  abs(deriv(port_rx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval]))\n  * on (macAddress, portID) group_left(portName, portMode)\n  max(port_info{deviceType=\"$device_type\", device_name=\"$device_name\", portMode!=\"\"} == 1) by (macAddress, portID, portName, portMode)\n) * 8",
@@ -1174,7 +1166,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1261,7 +1253,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "disableTextWrap": false,
           "editorMode": "code",
@@ -1277,7 +1269,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "disableTextWrap": false,
           "editorMode": "builder",
@@ -1298,7 +1290,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1385,7 +1377,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "(\n    temperature{deviceType=\"$device_type\", device_name=\"$device_name\"}\n    * on(macAddress) group_left(deviceName)\n    device_info{deviceType=\"$device_type\", device_name=\"$device_name\"}\n)",
@@ -1401,7 +1393,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1529,7 +1521,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1583,7 +1575,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1670,7 +1662,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "expr": "sum(\n  abs(deriv(port_tx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval])) +\n  abs(deriv(port_rx_bytes_total{deviceType=\"$device_type\", device_name=\"$device_name\"}[$rate_interval]))\n) * 8",
@@ -1686,7 +1678,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "$DS_PROMETHEUS"
       },
       "fieldConfig": {
         "defaults": {
@@ -1759,7 +1751,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "$DS_PROMETHEUS"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -1817,20 +1809,33 @@
   "templating": {
     "list": [
       {
+        "current": {},
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "label": "Data source",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "type": "datasource"
+      },
+      {
         "hide": 2,
         "name": "rate_interval",
-        "query": "${VAR_RATE_INTERVAL}",
+        "query": "6m",
         "skipUrlSync": true,
         "type": "constant",
         "current": {
-          "value": "${VAR_RATE_INTERVAL}",
-          "text": "${VAR_RATE_INTERVAL}",
+          "value": "6m",
+          "text": "6m",
           "selected": false
         },
         "options": [
           {
-            "value": "${VAR_RATE_INTERVAL}",
-            "text": "${VAR_RATE_INTERVAL}",
+            "value": "6m",
+            "text": "6m",
             "selected": false
           }
         ]
@@ -1839,18 +1844,18 @@
         "description": "",
         "hide": 2,
         "name": "device_type",
-        "query": "${VAR_DEVICE_TYPE}",
+        "query": "Gateway",
         "skipUrlSync": true,
         "type": "constant",
         "current": {
-          "value": "${VAR_DEVICE_TYPE}",
-          "text": "${VAR_DEVICE_TYPE}",
+          "value": "Gateway",
+          "text": "Gateway",
           "selected": false
         },
         "options": [
           {
-            "value": "${VAR_DEVICE_TYPE}",
-            "text": "${VAR_DEVICE_TYPE}",
+            "value": "Gateway",
+            "text": "Gateway",
             "selected": false
           }
         ]
@@ -1881,7 +1886,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(device_last_seen{job=\"Omada\"},device_name)",
+          "query": "label_values(device_info{deviceType=\"$device_type\"},deviceName)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
