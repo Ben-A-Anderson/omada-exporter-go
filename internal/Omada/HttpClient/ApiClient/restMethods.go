@@ -47,6 +47,7 @@ func Get[T any](client *ApiClient, endpoint string, endpointPlaceholders map[str
 		}
 
 		if response.StatusCode != http.StatusOK {
+			response.Body.Close()
 			return nil, Log.Error(nil, "Received non-OK status code from API: %d", response.StatusCode)
 		}
 

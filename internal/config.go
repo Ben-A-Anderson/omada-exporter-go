@@ -2,7 +2,7 @@ package internal
 
 import (
 	"sync"
-
+	"time"
 	"github.com/caarlos0/env/v10"
 )
 
@@ -20,6 +20,9 @@ type Config struct {
 		MetricsPath string `env:"METRICS_PATH" envDefault:"/metrics"`
 		MetricsPort string `env:"METRICS_PORT" envDefault:"8080"`
 	}
+	Clients struct {
+       		PollInterval time.Duration `env:"CLIENT_POLL_INTERVAL" envDefault:"5s"`
+   	}
 	Loki struct {
 		LokiURL     string `env:"LOKI_URL"`
 		Environment string `env:"LOKI_ENV" envDefault:"dev"`

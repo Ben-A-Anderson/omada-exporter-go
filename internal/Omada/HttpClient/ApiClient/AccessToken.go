@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"net/http"
+	"sync"
 	"time"
 
 	"omada_exporter_go/internal/Log"
@@ -37,6 +38,7 @@ func (OpenApiAccessToken) Payload(data map[string]any) (any, error) {
 }
 
 type AccessToken struct {
+	mu             sync.Mutex
 	response       *OpenApiAccessToken
 	clientID       string
 	clientSecret   string
@@ -54,7 +56,7 @@ func NewAccessToken(baseURL string, payload OpenApiTokenPayload) (*AccessToken, 
 	customTransport := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
-	a.httpClient = &http.Client{Transport: customTransport}
+	a.httpClient = &http.Client{Transport: customTransport, Timeout: 15 * time.Second}
 	a.clientID = payload.ClientID
 	a.clientSecret = payload.ClientSecret
 	a.omadaID = payload.OmadaID
@@ -107,6 +109,8 @@ func (a *AccessToken) requestAccessToken(payload OpenApiTokenPayload) error {
 }
 
 func (a *AccessToken) GetAccessToken() (string, error) {
+	a.mu.Lock()
+	defer a.mu.Unlock()
 	if a.response == nil {
 		return "", Log.Error(nil, "Access token response is nil, please request a token first")
 	}

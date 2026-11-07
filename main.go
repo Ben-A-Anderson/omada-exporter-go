@@ -12,7 +12,9 @@ func main() {
 	Log.Init()
 	Log.Info("Starting %s", internal.AppName)
 	http.Handle("/metrics", Prometheus.OmadaMetricsHandler())
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	http.Handle("/metrics/clients", Prometheus.ClientMetricsHandler())
+	Prometheus.StartClientPoller()
+	if err := http.ListenAndServe(":"+internal.GetConfig().Prometheus.MetricsPort, nil); err != nil {
 		panic(err)
 	}
 }
