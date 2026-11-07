@@ -12,6 +12,7 @@ import (
 	"omada_exporter_go/internal/Omada/Model/Gateway"
 	"omada_exporter_go/internal/Omada/Model/Interface"
 	"omada_exporter_go/internal/Omada/Model/Switch"
+	"omada_exporter_go/internal/Omada/Model/VPN"
 )
 
 var (
@@ -62,6 +63,13 @@ func CollectMetrics() error {
 		fmt.Println("failed to get access points: %w", err)
 	}
 	omada_scrape_duration.Set(time.Since(start).Seconds())
+
+	vpnTunnels, err := VPN.Get()
+	if err == nil {
+		ExposeVpnMetrics(*vpnTunnels)
+	} else {
+		fmt.Println("failed to get VPN tunnels: %w", err)
+	}
 
 	ExposeDeviceMetrics(omadaDevices)
 	ExposePortMetrics(omadaDevices)

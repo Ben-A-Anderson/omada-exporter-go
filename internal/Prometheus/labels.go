@@ -13,6 +13,12 @@ const (
 	label_radioFrequency string = "radioFrequency"
 )
 
+const (
+	label_vpnId string = "vpnId"
+	label_userId string = "userId"
+)
+
+var vpnIdentityLabels = []string{label_vpnId, label_userId}
 var deviceIdentityLabels = []string{label_deviceType, label_macAddress}
 
 var portIdentityLabels = []string{label_deviceType, label_macAddress, label_portID}

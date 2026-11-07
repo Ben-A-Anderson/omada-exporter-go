@@ -76,6 +76,10 @@ func GetList[T any](client *WebClient, endpoint string, endpointPlaceholders map
 			Log.Debug("No more pages to fetch or pagination not used, breaking the loop")
 			break
 		}
+		if nextPage <= currentPage || nextPage > 100 {
+			Log.Warn("Pagination not advancing for %s at page %d, stopping", endpoint, currentPage)
+			break
+		}
 		currentPage = nextPage
 	}
 

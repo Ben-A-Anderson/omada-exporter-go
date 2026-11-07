@@ -21,8 +21,8 @@ func AddPaginationParams(params map[string]string, page int) map[string]string {
 	if params == nil {
 		params = make(map[string]string)
 	}
-	params["page"] = strconv.Itoa(page)
-	params["pageSize"] = strconv.Itoa(DEFAULT_PAGE_SIZE)
+	params["currentPage"] = strconv.Itoa(page)
+	params["currentPageSize"] = strconv.Itoa(DEFAULT_PAGE_SIZE)
 	return params
 }
 
